@@ -1,0 +1,833 @@
+<html>
+  <head>
+      <title>Test</title>
+   <!-- <script src="dist/aframe-master.min.js"></script>-->
+      <script src="dist/aframe-master.js"></script>
+    <script src="node_modules/aframe-mouse-cursor-component/dist/aframe-mouse-cursor-component.js"></script>
+
+  </head>
+  <body>
+      
+    <script src="js/gazeControl.js"></script>
+    <a-scene id="scene">
+        <a-assets>
+<!--            deklarasi item-->
+            <a-asset-item id="bri-office" src="dae/bri-office-4.dae"></a-asset-item>
+<!--            Deklarasi Library-->
+<!--            Image-->
+            
+            <img id="ui-test" src="image/ui-test.png">
+            <img id="ui-stat" src="image/stat.png">
+           <img id="office" src="assets/office-360.jpg">
+           <img id="space" src="img/space2.jpg">
+           <img id="name" src="img/name.png">
+           <img id="portal_bg" src="img/portal_bg.png">
+           <img id="ring2" src="img/ring2.png">
+           <img id="glow1" src="img/glow1.png">
+           <img id="ring4" src="img/ring4.png">
+           <img id="schematic1" src="img/schematic1.png">
+           <img id="schematic2" src="img/schematic2.png">
+           <img id="schematic5" src="img/schematic5.png">
+           <img id="text_title" src="img/text_title.png">
+           
+
+
+           <img id="text_title_background" src="img/text_title_background.png">
+           <img id="map" src="img/map.png">
+
+           <img id="text_title_problems" src="img/text_title_problems.png">
+           <img id="content_problems" src="img/content_problems.jpg">       
+
+            <img id="text_title_solutions" src="img/text_title_solutions.png">      
+            <img id="content_solutions" src="img/content_solutions.png">
+
+            <img id="text_title_methods" src="img/text_title_methods.png">      
+            <img id="content_methods" src="img/content_methods.png">                      
+
+            <img id="text_title_designsystems" src="img/text_title_designsystem.png">      
+            <img id="content_designsystems" src="img/content_designsystem.png">                      
+            
+            <img id="text_title_prototype" src="img/text_title_prototype.png">
+            <img id="content_prototype" src="img/content_prototype.png">      
+            <img id="ty" src="img/ty.png">                      
+
+
+           <img id="background_point" src="img/background_point.png">
+           <img id="problems_point" src="img/problems_point.png">
+            <img id="solutions_point" src="img/solutions_point.png">
+            <img id="methods_point" src="img/methods_point.png">
+           <img id="designsystems_point" src="img/designsystem_point.png">
+           
+           
+
+
+
+
+           <img id="button_background" src="img/button_background.png">
+           <img id="button_problems" src="img/button_problems.png">
+           <img id="button_objectives" src="img/button_objectives.png">
+           <img id="button_solutions" src="img/button_solutions.png">
+
+           <img id="button_methods" src="img/button_methods.png">
+           <img id="button_designsystem" src="img/button_designsystem.png">
+           <img id="button_features" src="img/button_features.png">
+           <img id="button_prototype" src="img/button_prototype.png">
+            
+<!--            Sound-->
+            
+            <audio id="blip1" src="sound/blip1.wav"></audio>
+            <audio id="blip2" src="sound/blip2.wav"></audio>
+            <audio id="shot" src="sound/click.ogg"></audio>
+            
+<!--                Effect-->
+<!--                Merubah Warna atau material-->
+            <a-mixin id="cube-hovered" material="color: #CC435F"></a-mixin>
+            <a-mixin id="cube-selected" material="color: #876A96"></a-mixin>
+            <a-mixin id="red" material="color: #F35F5F"></a-mixin>
+            <a-mixin id="green" material="color: #9DE0AD"></a-mixin>
+            <a-mixin id="blue" material="color: #36A3EB"></a-mixin>
+            <a-mixin id="yellow" material="color: #F1EA65"></a-mixin>
+<!--                    Merubah Bentuk atau geometry-->
+            <a-mixin id="cube" geometry="primitive: box"></a-mixin>
+            <a-mixin id="sphere" geometry="primitive: sphere"></a-mixin>
+
+        </a-assets>
+
+
+<!--                Eksekusi Library-->
+            <a-sky id="current-sky" color="white">
+        <a-animation begin="click" attribute="opacity" from="100" to="0">
+       </a-animation>
+        </a-sky>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Portal -->
+
+         <a-image id="goto_home" class="clickable" src="#name" rotation="0 0 0" scale="2 1 1" position="0 1.5 9"></a-image>
+          <a-plane id="gate" src="#portal_bg" rotation="0 0 0" scale="8 4 1" position="0 1.6 8"></a-plane>
+       
+<!--Slide 1 title -->
+        <a-image id="slide_1" class="clickable" rotation="0 0 0" scale="5 5 5" material="opacity: 0" color="yellow" position="0 0 -6"></a-image>
+
+        <a-image src="#ring2" rotation="0 0 0" scale="6 6 6" position="0 2 -5"></a-image>
+        <a-image src="#glow1" rotation="0 0 0" scale="6 6 6" position="0 2 -4.5"></a-image>
+        <a-image src="#text_title" rotation="0 0 0" scale="7 1 1" position="0 2 -4"></a-image>
+
+<!--Slide Menu -->
+
+        <a-image src="#button_background" rotation="0 0 0" scale="1.3 1.3 1.3" position="-1.5 2.2 -12"></a-image>
+           <a-plane id="slide_3" material="opacity: 0" class="clickable" rotation="0 0 0" scale="1.3 1.3 1.3" position="-1.2 2.2 -11.5"></a-plane>
+     
+        <a-image id="problems" class="clickable" src="#button_problems" rotation="0 0 0" scale="1.3 1.3 1.3" position="0 2.2 -12"></a-image>
+      <!--  <a-image id="objectives" class="clickable" src="#button_objectives" rotation="0 0 0" scale="1.3 1.3 1.3" position="0.670 2.2 -12"></a-image> -->
+        <a-image id="solutions" class="clickable" src="#button_solutions" rotation="0 0 0" scale="1.3 1.3 1.3" position="1.5 2.2 -12"></a-image>
+
+        <a-image id="methods" class="clickable" src="#button_methods" rotation="0 0 0" scale="1.3 1.3 1.3" position="-1.5 0.8 -12"></a-image>
+        <a-image id="designsystems" class="clickable" src="#button_designsystem" rotation="0 0 0" scale="1.3 1.3 1.3" position="0 0.8 -12"></a-image>
+        
+<!--
+        <a-image id="features" class="clickable" src="#button_features" rotation="0 0 0" scale="1.3 1.3 1.3" position="0.670 0.8 -12"></a-image> -->
+
+        <a-image id="prototype" class="clickable" src="#button_prototype" rotation="0 0 0" scale="1.3 1.3 1.3" position="1.5 0.8 -12"></a-image>
+
+        
+        <a-image src="#glow1" rotation="0 0 0" scale="6 6 6" position="0 2 -5"></a-image>
+        <a-image src="#text_title" rotation="0 0 0" scale="7 1 1" position="0 2 -4"></a-image>
+
+
+
+<!--CONTENT-->
+
+
+
+
+
+<!--Slide 2 latar belakang-->
+<a-entity id="slide_background" visible="false">
+        <a-plane id="slide_2" material="opacity: 0" class="clickable" rotation="0 -90 0" scale="3 3 3" position="15 2 -34"></a-plane>
+       <!-- <a-text value="Hello, World!" rotation="0 -90 0" scale="5 5 5" position="10 0 0"></a-text> -->
+        <a-image src="#text_title_background" rotation="0 -90 0" scale="5 1 1" position="15 4.2 -38"></a-image>
+        <a-image src="#map" rotation="0 -90 0" scale="4 2 1" position="12 1.3 -34"></a-image>
+        </a-entity>
+
+<!-- Slide Sub -->
+        <a-entity id="slide_sub" visible="false">
+                <a-plane id="slide_sub" class="clickable" material="opacity: 0" rotation="0 -90 0" scale="3 3 3" position="23 2 -34"></a-plane>
+               <!-- <a-text value="Hello, World!" rotation="0 -90 0" scale="5 5 5" position="10 0 0"></a-text> -->
+                <a-image src="#text_title_background" rotation="0 -90 0" scale="5 1 1" position="23 4.2 -38"></a-image>
+                <a-image src="#background_point" rotation="0 -90 0" scale="4 0.75 1" position="20 1.3 -34"></a-image>
+                </a-entity>
+
+
+
+
+
+<a-entity id="slide_problems" visible="false">
+        <a-plane id="slide_2_problems" material="opacity: 0" class="clickable" rotation="0 -90 0" scale="3 3 3" position="15 2 4"></a-plane>
+       <!-- <a-text value="Hello, World!" rotation="0 -90 0" scale="5 5 5" position="10 0 0"></a-text> -->
+        <a-image src="#text_title_problems" rotation="0 -90 0" scale="5 1 1" position="15 4.2 0"></a-image>
+        <a-image src="#content_problems" rotation="0 -90 0" scale="4 2 1" position="12 1.3 4"></a-image>
+        </a-entity>
+
+<!-- Slide Sub -->
+        <a-entity id="slide_sub_problems" visible="false">
+                <a-plane id="slide_sub_problems" class="clickable" material="opacity: 0" rotation="0 -90 0" scale="3 3 3" position="23 2 4"></a-plane>
+               <!-- <a-text value="Hello, World!" rotation="0 -90 0" scale="5 5 5" position="10 0 0"></a-text> -->
+                <a-image src="#text_title_problems" rotation="0 -90 0" scale="5 1 1" position="23 4.2 0"></a-image>
+                <a-image src="#problems_point" rotation="0 -90 0" scale="4 0.75 1" position="20 1.3 4"></a-image>
+                </a-entity>
+
+
+
+<a-entity id="slide_solutions" visible="true">
+        <a-plane id="slide_2_solutions" material="opacity: 0" class="clickable" rotation="0 -90 0" scale="3 3 3" position="15 2 44"></a-plane>
+       <!-- <a-text value="Hello, World!" rotation="0 -90 0" scale="5 5 5" position="10 0 0"></a-text> -->
+        <a-image src="#text_title_solutions" rotation="0 -90 0" scale="5 1 1" position="15 4.2 40"></a-image>
+        <a-image src="#content_solutions" rotation="0 -90 0" scale="4 2 1" position="12 1.3 44"></a-image>
+        </a-entity>
+
+<!-- Slide Sub -->
+        <a-entity id="slide_sub_solutions" visible="true">
+                <a-plane id="slide_sub_solutions" class="clickable" material="opacity: 0" rotation="0 -90 0" scale="3 3 3" position="23 2 44"></a-plane>
+               <!-- <a-text value="Hello, World!" rotation="0 -90 0" scale="5 5 5" position="10 0 0"></a-text> -->
+                <a-image src="#text_title_solutions" rotation="0 -90 0" scale="5 1 1" position="23 4.2 40"></a-image>
+                <a-image src="#solutions_point" rotation="0 -90 0" scale="5.6 1.5 1" position="20 1.3 44"></a-image>
+                </a-entity>
+
+
+
+       <!-- <a-plane id="goto_home" class="clickable" src="#name" rotation="0 0 0" scale="1 1 1" position="0 1.5 9" text="width:1.5;height:5.5;value:BRI SATELIT;wrapCount:70;align:center"></a-plane> -->
+
+
+
+
+
+<a-entity id="slide_methods" visible="false">
+        <a-plane id="slide_2_methods" material="opacity: 0" class="clickable" rotation="0 90 0" scale="3 3 3" position="-15 2 -34"></a-plane>
+       <!-- <a-text value="Hello, World!" rotation="0 -90 0" scale="5 5 5" position="10 0 0"></a-text> -->
+        <a-image src="#text_title_methods" rotation="0 90 0" scale="5 1 1" position="-15 4.6 -38"></a-image>
+        <a-image src="#content_methods" rotation="0 90 0" scale="4.75 3 1" position="-12 1.9 -34.60"></a-image>
+        </a-entity>
+
+<!-- Slide Sub -->
+        <a-entity id="slide_sub_methods" visible="false">
+                <a-plane id="slide_sub_methods" class="clickable" material="opacity: 0" rotation="0 90 0" scale="3 3 3" position="-29 2 -34"></a-plane>
+               <!-- <a-text value="Hello, World!" rotation="0 -90 0" scale="5 5 5" position="10 0 0"></a-text> -->
+                <a-image src="#text_title_methods" rotation="0 90 0" scale="5 1 1" position="-26 4.9 -38.8"></a-image>
+                <a-image src="#methods_point" rotation="0 90 0" scale="7 4.25 1" position="-24 1.4 -34"></a-image>
+                </a-entity>
+
+
+
+<a-entity id="slide_designystems" visible="false">
+        <a-plane id="slide_2_designsystems" material="opacity: 0" class="clickable" rotation="0 90 0" scale="3 3 3" position="-15 2 4"></a-plane>
+       <!-- <a-text value="Hello, World!" rotation="0 -90 0" scale="5 5 5" position="10 0 0"></a-text> -->
+        <a-image src="#text_title_designsystems" rotation="0 90 0" scale="5 1 1" position="-15 4.2 0"></a-image>
+        <a-image src="#content_designsystems" rotation="0 90 0" scale="4 2 1" position="-12 1.3 4"></a-image>
+        </a-entity>
+
+<!-- Slide Sub -->
+        <a-entity id="slide_sub_designsystems" visible="false">
+                <a-plane id="slide_sub_designsystems" class="clickable" material="opacity: 0" rotation="0 90 0" scale="3 3 3" position="-23 2 4"></a-plane>
+               <!-- <a-text value="Hello, World!" rotation="0 -90 0" scale="5 5 5" position="10 0 0"></a-text> -->
+                <a-image src="#text_title_designsystems" rotation="0 90 0" scale="5 1 1" position="-23 4.2 0"></a-image>
+                <a-image src="#designsystems_point" rotation="0 90 0" scale="4.5 2 1" position="-20 1.3 4"></a-image>
+                </a-entity>
+
+
+
+<a-entity id="slide_prototype" visible="true">
+        <a-plane id="slide_2_prototype" material="opacity: 0" class="clickable" rotation="0 90 0" scale="3 3 3" position="-15 2 44"></a-plane>
+       <!-- <a-text value="Hello, World!" rotation="0 -90 0" scale="5 5 5" position="10 0 0"></a-text> -->
+        <a-image src="#text_title_prototype" rotation="0 90 0" scale="5 1 1" position="-15 4.2 40"></a-image>
+        <a-image src="#content_prototype" rotation="0 90 0" scale="4 2 1" position="-12 1.3 44"></a-image>
+        </a-entity>
+
+<!-- Slide Sub -->
+        <a-entity id="slide_sub_prototype" visible="true">
+               <!-- <a-text value="Hello, World!" rotation="0 -90 0" scale="5 5 5" position="10 0 0"></a-text> -->
+                <a-image src="#ty" rotation="0 90 0" scale="3 1 1" position="-20 1.7 44"></a-image>
+                </a-entity>
+
+
+
+
+
+
+
+      <!--            Semua elemen yang mengikuti kamera ada di look control ini-->
+      <a-entity camera look-controls mouse-cursor id="mainCamera" position="0 0 10">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- START Animasi Kamera -->
+
+
+
+<!-- goto home -->
+              <a-animation begin="goto_home" attribute="position" from="0 0 10" to="0 0 -1" dur="2000"
+                     easing="linear"></a-animation>
+
+
+<!-- Goto menu-->
+              <a-animation begin="goto_menu" attribute="position" from="0 0 -1" to="0 0 -10" dur="2000"
+                     easing="linear"></a-animation>
+
+
+
+<!-- back  to menu-->
+
+ <a-animation begin="backtomenu" attribute="position" from="10 0 -3.87" to="0 0 -10" dur="1500"
+                     easing="linear"></a-animation>
+             <a-animation begin="backtomenu" attribute="rotation" from="0 -90 0" to="0 0 0" dur="1500"
+                     easing="linear"></a-animation>
+
+<!-- Goto content-->
+
+             <a-animation begin="background" attribute="position" from="0 0 -10" to="10 0 -34" dur="1000"
+                     easing="linear"></a-animation>
+             <a-animation begin="background" attribute="rotation" from="0 0 0" to="0 -90 0" dur="1000"
+                     easing="linear"></a-animation>
+
+      <!-- Goto sub-content-->
+
+                   <a-animation begin="sub_content" attribute="position" from="10 0 -3.87" to="18 0 -34" dur="1000"
+                           easing="linear"></a-animation>
+
+
+<!-- Goto content-->
+
+             <a-animation begin="problems" attribute="position" from="0 0 -10" to="10 0 4" dur="1000"
+                     easing="linear"></a-animation>
+             <a-animation begin="problems" attribute="rotation" from="0 0 0" to="0 -90 0" dur="1000"
+                     easing="linear"></a-animation>
+
+      <!-- Goto sub-content-->
+
+                   <a-animation begin="sub_content_problems" attribute="position" from="10 0 4" to="18 0 4" dur="1000"
+                           easing="linear"></a-animation>
+
+
+
+
+<!-- Goto content-->
+
+             <a-animation begin="solutions" attribute="position" from="0 0 -10" to="10 0 44" dur="1000"
+                     easing="linear"></a-animation>
+             <a-animation begin="solutions" attribute="rotation" from="0 0 0" to="0 -90 0" dur="1000"
+                     easing="linear"></a-animation>
+
+      <!-- Goto sub-content-->
+
+                   <a-animation begin="sub_content_solutions" attribute="position" from="10 0 44" to="18 0 44" dur="1000" easing="linear"></a-animation>
+
+
+
+<!-- Goto content-->
+
+             <a-animation begin="methods" attribute="position" from="0 0 -10" to="-10 0 -34" dur="1000"
+                     easing="linear"></a-animation>
+             <a-animation begin="methods" attribute="rotation" from="0 0 0" to="0 90 0" dur="1000"
+                     easing="linear"></a-animation>
+
+      <!-- Goto sub-content-->
+
+                   <a-animation begin="sub_content_methods" attribute="position" from="-10 0 -34" to="-20 0 -34" dur="1000" easing="linear"></a-animation>
+
+
+
+<!-- Goto content-->
+
+             <a-animation begin="designsystems" attribute="position" from="0 0 -10" to="-10 0 4" dur="1000"
+                     easing="linear"></a-animation>
+             <a-animation begin="designsystems" attribute="rotation" from="0 0 0" to="0 90 0" dur="1000"
+                     easing="linear"></a-animation>
+
+      <!-- Goto sub-content-->
+
+                   <a-animation begin="sub_content_designsystems" attribute="position" from="-10 0 4" to="-18 0 4" dur="1000"
+                           easing="linear"></a-animation>
+
+
+<!-- Goto content-->
+
+             <a-animation begin="prototype" attribute="position" from="0 0 -10" to="-10 0 44" dur="1000"
+                     easing="linear"></a-animation>
+             <a-animation begin="prototype" attribute="rotation" from="0 0 0" to="0 90 0" dur="1000"
+                     easing="linear"></a-animation>
+
+      <!-- Goto sub-content-->
+
+                   <a-animation begin="sub_content_prototype" attribute="position" from="-10 0 44" to="-18 0 44" dur="1000" easing="linear"></a-animation>
+
+
+    <a-camera id="vr-camera" mouse-cursor wasd-controls-enabled="false" rotation="0 0 0">
+<!--       END Animasi Kamera-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       <!-- HUD Kamera -->
+       <!-- 
+        <a-entity id="hudTitle" geometry="width:0.3;primitive:plane;height:0.2" position="-1.038 0.536 -0.799" material="color:gray;opacity:0.5" scale="2.85 0.881 1.32" text="width:1.5;height:5.5;value:BRI SATELIT;wrapCount:70;align:center">
+        </a-entity>
+        -->
+        <a-entity id="cursor" position="0 0 -0.5" scale="0.2 0.2 0.2" geometry="primitive: ring; radiusOuter: 0.01;radiusInner: 0.01;" material="color: black; shader: flat" cursor="maxDistance: 30;  fuse: false" raycaster="objects: .clickable">
+          
+        <a-animation begin="click" easing="ease-in" attribute="scale" fill="backwards" from="0.1 0.1 0.1" to="0.2 0.2 0.2" dur="150"></a-animation>
+           
+        
+        <a-animation begin="fusing" easing="ease-in" attribute="scale" fill="forwards" from="0.2 0.2 0.2" to="0.1 0.1 0.1" dur="1000"></a-animation>
+          
+          <!--
+          <a-entity material="opacity: 0"></a-entity>
+          -->
+      </a-entity>
+         
+    </a-camera>
+  </a-entity>
+
+<!--        Demo Objek ketika di klik-->
+<!--
+      <a-entity position="-3.5 1 0" id="boxDemo" geometry="box" class="intersectable">
+          
+-->
+<!--
+        <a-box id="box" class="clickable" position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9" 
+        sound__1="on: click; src: #shot; poolSize: 6" sound__2="on: mouseenter; src: #blip2;">
+-->
+
+        <a-animation begin="click" attribute="position" from="0 0 0"
+                           to="0 0 -10" dur="2000" fill="both">
+        </a-animation>
+       
+        <a-animation begin="click" attribute="rotation" to="0 360 0"
+                       easing="linear" dur="2000" fill="backwards">
+        </a-animation>
+        
+
+        </a-box>
+  
+        
+        
+<!--
+        
+        <a-collada-model src="#bri-office" scale="2 2 2"></a-collada-model>
+        <a-collada-model src="#bri-office" scale="2 2 2" position="1.405 -0.872 1.134" rotation="0 -180 0"></a-collada-model>
+-->
+<!--
+        <a-entity mixin="red cube"
+                  class="intersectable">
+-->
+<!--          animasi-->
+<!--
+          <a-animation begin="click" attribute="position" from="0 0 0"
+                       to="0 0 -10" dur="2000" fill="both"></a-animation>
+       
+        </a-entity>
+-->
+
+             <a-assets>
+        <img id="background" src="#office">
+      </a-assets>
+      <a-entity position="0 0 4">
+        <a-camera></a-camera>
+      </a-entity>
+      <!-- Directly beneath the camera -->
+      <!--
+      <a-entity position="0 -10.1 -1" rotation="30 180 0">
+        <a-sphere radius="7" color="#7BC8A4"></a-sphere>
+
+        <a-entity>
+          <a-animation attribute="rotation" to="45 100 100" dur="5000" delay="250" repeat="indefinite" direction="alternate"></a-animation>
+          <a-sphere radius="1.5" color="#7BC8A4"></a-sphere>
+          <a-cylinder position="0 5 0" height="10" radius="0.075" color="#404040"></a-cylinder>
+
+          <a-entity position="0 10 0">
+            <a-animation attribute="rotation" to="90 90 0" dur="2000" delay="0" repeat="indefinite" direction="alternate"></a-animation>
+            <a-sphere radius="1" color="#F16745"></a-sphere>
+            <a-cylinder position="0 5 0" height="10" radius="0.075" color="#404040"></a-cylinder>
+
+            <a-entity position="0 10 0">
+              <a-animation attribute="rotation" to="50 10 100" dur="2000" delay="0" repeat="indefinite" direction="alternate"></a-animation>
+              <a-sphere radius="3" color="#4CC3D9"></a-sphere>
+              <a-cylinder position="0 5 0" height="10" radius="0.075" color="#404040"></a-cylinder>
+
+              <a-entity position="0 10 0">
+                <a-animation attribute="rotation" to="50 40 50" dur="2000" delay="250" repeat="indefinite" direction="alternate"></a-animation>
+                <a-sphere radius="4.5" color="#FFC65D"></a-sphere>
+                <a-cylinder position="0 5 0" height="10" radius="0.075" color="#404040"></a-cylinder>
+
+                <a-entity position="0 10 0">
+                  <a-animation attribute="rotation" to="90 90 0" dur="2000" delay="0" repeat="indefinite" direction="alternate"></a-animation>
+                  <a-sphere radius="1.5" color="#93648D"></a-sphere>
+                  <a-cylinder position="0 5 0" height="10" radius="0.075" color="#404040"></a-cylinder>
+
+                  <a-entity position="0 10 0">
+                    <a-sphere radius="1.5" color="#FFF"></a-sphere>
+
+                  </a-entity>
+                </a-entity>
+              </a-entity>
+            </a-entity>
+          </a-entity>
+        </a-entity>
+      </a-entity>
+-->
+      <!-- Distant orbit -->
+      <a-entity rotation="120 40 0" scale="10 10 10">
+
+        <a-entity rotation="0 0 0">
+          <a-animation attribute="rotation" to="0 0 360" dur="20000" easing="linear" repeat="indefinite"></a-animation>
+
+          <a-entity position="-18.25 -5 0" rotation="0 0 0">
+            <a-sphere radius="0.3" color="#7e3f1a"></a-sphere>
+            <a-cylinder position="0 5 0" height="10" radius="0.015" color="#7e3f1a"></a-cylinder>
+
+            <a-entity position="0 10 0" rotation="0 0 -36">
+              <a-sphere radius="0.5" color="#372246"></a-sphere>
+              <a-cylinder position="0 5 0" height="10" radius="0.015" color="#7e3f1a"></a-cylinder>
+
+              <a-entity position="0 10 0" rotation="0 0 -36">
+                <a-sphere radius="0.2" color="#7e3f1a"></a-sphere>
+                <a-cylinder position="0 5 0" height="10" radius="0.015" color="#7e3f1a"></a-cylinder>
+
+                <a-entity position="0 10 0" rotation="0 0 -36">
+                  <a-sphere radius="0.7" color="#372246"></a-sphere>
+                  <a-cylinder position="0 5 0" height="10" radius="0.015" color="#7e3f1a"></a-cylinder>
+
+                  <a-entity position="0 10 0" rotation="0 0 -36">
+                    <a-sphere radius="2" color="#7e3f1a"></a-sphere>
+                    <a-cylinder position="0 5 0" height="10" radius="0.015" color="#7e3f1a"></a-cylinder>
+
+                    <a-entity position="0 10 0" rotation="0 0 -36">
+                      <a-sphere radius="0.25" color="#7e3f1a"></a-sphere>
+                      <a-cylinder position="0 5 0" height="10" radius="0.015" color="#7e3f1a"></a-cylinder>
+
+                      <a-entity position="0 10 0" rotation="0 0 -36">
+                        <a-sphere radius="0.5" color="#7e3f1a"></a-sphere>
+                        <a-cylinder position="0 5 0" height="10" radius="0.015" color="#7e3f1a"></a-cylinder>
+
+                        <a-entity position="0 10 0" rotation="0 0 -36">
+                          <a-sphere radius="0.5" color="#7e3f1a"></a-sphere>
+                          <a-cylinder position="0 5 0" height="10" radius="0.015" color="#7e3f1a"></a-cylinder>
+
+                          <a-entity position="0 10 0" rotation="0 0 -36">
+                            <a-sphere radius="0.3" color="#372246"></a-sphere>
+                            <a-cylinder position="0 5 0" height="10" radius="0.015" color="#7e3f1a"></a-cylinder>
+
+                            <a-entity position="0 10 0" rotation="0 0 -36">
+                              <a-sphere radius="0.05" color="#7e3f1a"></a-sphere>
+                              <a-cylinder position="0 5 0" height="10" radius="0.015" color="#7e3f1a"></a-cylinder>
+
+                            </a-entity>
+                          </a-entity>
+                        </a-entity>
+                      </a-entity>
+                    </a-entity>
+                  </a-entity>
+                </a-entity>
+              </a-entity>
+            </a-entity>
+          </a-entity>
+        </a-entity>
+      </a-entity>
+
+      <a-sky src="#space"></a-sky>
+      <a-entity light="type: directional; color: #FFF; intensity: 0.5"
+                position="-1 2 1"></a-entity>
+      <a-entity light="type: ambient; color: #461e06;"></a-entity>
+      </a-scene>
+      
+    <script>
+//        
+// alert('click');
+var slide_1 = document.getElementById('slide_1');
+
+
+var slide_2 = document.getElementById('slide_2');
+
+var slide_3 = document.getElementById('slide_3');
+
+var slide_2_problems = document.getElementById('slide_2_problems');
+var slide_2_solutions = document.getElementById('slide_2_solutions');
+var slide_2_methods = document.getElementById('slide_2_methods');
+var slide_2_designsystems = document.getElementById('slide_2_designsystems');
+var slide_2_prototype = document.getElementById('slide_2_prototype');
+
+
+
+var current_sky = document.getElementById('current-sky');
+var cam = document.getElementById('mainCamera');
+var goto_home = document.getElementById('goto_home');
+
+var slide_background = document.getElementById('slide_background');
+var slide_problems = document.getElementById('slide_problems');
+var slide_solutions = document.getElementById('slide_solutions');
+var slide_methods = document.getElementById('slide_methods');
+var slide_designystems= document.getElementById('slide_designystems');
+var slide_prototype= document.getElementById('slide_prototype');
+
+
+var slide_sub = document.getElementById('slide_sub');
+var slide_sub_problems = document.getElementById('slide_sub_problems');
+var slide_sub_solutions = document.getElementById('slide_sub_solutions');
+var slide_sub_methods = document.getElementById('slide_sub_methods');
+var slide_sub_designsystems = document.getElementById('slide_sub_designsystems');
+var slide_sub_prototype = document.getElementById('slide_sub_protoype');
+
+
+var background = document.getElementById('background');
+var problems = document.getElementById('problems');
+var objectives = document.getElementById('objectives');
+var solutions = document.getElementById('solutions');
+var methods = document.getElementById('methods');
+var designsystems = document.getElementById('designsystems');
+var features = document.getElementById('features');
+var prototype = document.getElementById('prototype');
+//
+
+
+goto_home.addEventListener('click', function() {
+   // alert('home');
+   // cam.setAttribute('position','0 0 20');
+   cam.emit('goto_home');
+  // slide_1.setAttribute('visible',false);
+   // current_sky.setAttribute('src','#office');
+});
+    
+slide_1.addEventListener('click', function() {
+   // alert('blue');
+    //cam.setAttribute('position','0 0 5');
+        cam.emit('goto_menu');
+   // current_sky.setAttribute('color','blue');
+  // current_sky.setAttribute('color','yellow');
+});
+
+
+
+
+background.addEventListener('click', function() {
+        cam.emit('background'); 
+        slide_background.setAttribute('visible',true);
+        slide_sub.setAttribute('visible',false); 
+});
+
+slide_3.addEventListener('click', function() {
+        cam.emit('background'); 
+        slide_background.setAttribute('visible',true);
+        slide_sub.setAttribute('visible',false); 
+});
+
+slide_2.addEventListener('click', function() {
+   // alert('red');
+   // cam.setAttribute('position','0 0 20');
+   cam.emit('sub_content');
+   slide_sub.setAttribute('visible',true);
+   // current_sky.setAttribute('src','#office');
+});
+   
+slide_sub.addEventListener('click', function() {
+   // alert('red');
+   // cam.setAttribute('position','0 0 20');
+   slide_background.setAttribute('visible',false);
+   slide_sub.setAttribute('visible',false);
+   cam.emit('backtomenu');
+   // current_sky.setAttribute('src','#office');
+});
+
+//////////////////////
+problems.addEventListener('click', function() {
+        cam.emit('problems'); 
+        slide_problems.setAttribute('visible',true);
+        slide_sub_problems.setAttribute('visible',false);
+});
+
+slide_2_problems.addEventListener('click', function() {
+   // alert('red');
+   // cam.setAttribute('position','0 0 20');
+   cam.emit('sub_content_problems');
+   slide_sub_problems.setAttribute('visible',true);
+   // current_sky.setAttribute('src','#office');
+});
+   
+slide_sub_problems.addEventListener('click', function() {
+   // alert('red');
+   // cam.setAttribute('position','0 0 20');
+   slide_problems.setAttribute('visible',false);
+   slide_sub_problems.setAttribute('visible',false);
+   cam.emit('backtomenu');
+   // current_sky.setAttribute('src','#office');
+});
+
+
+//////////////////////
+solutions.addEventListener('click', function() {
+        cam.emit('solutions'); 
+        slide_solutions.setAttribute('visible',true);
+        slide_sub_solutions.setAttribute('visible',false);
+        slide_problems.setAttribute('visible',false);  
+});
+
+slide_2_solutions.addEventListener('click', function() {
+   // alert('red');
+   // cam.setAttribute('position','0 0 20');
+   cam.emit('sub_content_solutions');
+   slide_sub_solutions.setAttribute('visible',true);
+   // current_sky.setAttribute('src','#office');
+});
+   
+slide_sub_solutions.addEventListener('click', function() {
+   // alert('red');
+   // cam.setAttribute('position','0 0 20');
+   slide_solutions.setAttribute('visible',false);
+   slide_sub_solutions.setAttribute('visible',false);
+   cam.emit('backtomenu');
+   // current_sky.setAttribute('src','#office');
+});
+
+
+
+//////////////////////
+methods.addEventListener('click', function() {
+        cam.emit('methods'); 
+        slide_methods.setAttribute('visible',true);
+        slide_sub_methods.setAttribute('visible',false);
+});
+
+slide_2_methods.addEventListener('click', function() {
+   // alert('red');
+   // cam.setAttribute('position','0 0 20');
+   cam.emit('sub_content_methods');
+   slide_sub_methods.setAttribute('visible',true);
+   // current_sky.setAttribute('src','#office');
+});
+   
+slide_sub_methods.addEventListener('click', function() {
+   // alert('red');
+   // cam.setAttribute('position','0 0 20');
+   slide_methods.setAttribute('visible',false);
+   slide_sub_methods.setAttribute('visible',false);
+   cam.emit('backtomenu');
+   // current_sky.setAttribute('src','#office');
+});
+
+
+//////////////////////
+designsystems.addEventListener('click', function() {
+        cam.emit('designsystems'); 
+        slide_designystems.setAttribute('visible',true);
+        slide_sub_designsystems.setAttribute('visible',false);
+});
+
+slide_2_designsystems.addEventListener('click', function() {
+   // alert('red');
+   // cam.setAttribute('position','0 0 20');
+   cam.emit('sub_content_designsystems');
+   slide_sub_designsystems.setAttribute('visible',true);
+   // current_sky.setAttribute('src','#office');
+});
+   
+slide_sub_designsystems.addEventListener('click', function() {
+   // alert('red');
+   // cam.setAttribute('position','0 0 20');
+   slide_designystems.setAttribute('visible',false);
+   slide_sub_designsystems.setAttribute('visible',false);
+   cam.emit('backtomenu');
+   // current_sky.setAttribute('src','#office');
+});
+
+
+
+//////////////////////
+prototype.addEventListener('click', function() {
+        cam.emit('prototype'); 
+        slide_prototype.setAttribute('visible',true);
+        slide_sub_prototype.setAttribute('visible',false);
+});
+
+slide_2_prototype.addEventListener('click', function() {
+   // alert('red');
+   // cam.setAttribute('position','0 0 20');
+   cam.emit('sub_content_prototype');
+   slide_sub_prototype.setAttribute('visible',true);
+   // current_sky.setAttribute('src','#office');
+});
+   
+slide_sub_prototype.addEventListener('click', function() {
+   // alert('red');
+   // cam.setAttribute('position','0 0 20');
+   slide_prototype.setAttribute('visible',false);
+   slide_sub_prototype.setAttribute('visible',false);
+   cam.emit('backtomenu');
+   // current_sky.setAttribute('src','#office');
+});
+
+
+
+
+
+ 
+
+//
+//    var scene = document.querySelector('a-scene');
+//var cylinder = document.createElement('a-cylinder');
+//cylinder.setAttribute('color', '#FF9500');
+//cylinder.setAttribute('height', '2');
+//cylinder.setAttribute('radius', '0.75');
+//cylinder.setAttribute('position', '3 1 0');
+//scene.appendChild(cylinder);
+        </script>
+
+
+    </body>
+</html>
